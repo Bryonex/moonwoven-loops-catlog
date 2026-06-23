@@ -703,24 +703,242 @@
             text-align: center;
         }
 
+        .order-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 4000;
+            background: rgba(43, 43, 43, 0.62);
+            backdrop-filter: blur(8px);
+            padding: 22px;
+            overflow-y: auto;
+        }
+
+        .order-modal.active {
+            display: grid;
+            place-items: center;
+        }
+
+        .order-dialog {
+            width: min(620px, 100%);
+            max-height: calc(100svh - 44px);
+            overflow-y: auto;
+            background: var(--white);
+            border-radius: 14px;
+            box-shadow: 0 24px 70px rgba(43, 43, 43, 0.28);
+            animation: fadeInScale 0.28s ease;
+        }
+
+        .order-dialog-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 26px 28px 16px;
+            border-bottom: 1px solid rgba(93, 74, 135, 0.12);
+        }
+
+        .order-dialog-header h2 {
+            font-size: 2rem;
+            line-height: 1.1;
+        }
+
+        .order-kicker {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--accent);
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .order-close {
+            border: 0;
+            background: transparent;
+            color: var(--text-light);
+            cursor: pointer;
+            font-size: 1.7rem;
+            line-height: 1;
+            padding: 4px;
+        }
+
+        .order-form {
+            padding: 22px 28px 28px;
+        }
+
+        .order-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .order-meta-card {
+            background: var(--bg-color);
+            border: 1px solid rgba(216, 196, 138, 0.28);
+            border-radius: 8px;
+            padding: 12px 14px;
+        }
+
+        .order-meta-card span,
+        .order-field label,
+        .order-summary-title {
+            display: block;
+            color: var(--secondary);
+            font-size: 0.76rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .order-meta-card strong {
+            display: block;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        .order-field {
+            margin-bottom: 16px;
+        }
+
+        .order-field input {
+            width: 100%;
+            border: 1px solid rgba(93, 74, 135, 0.22);
+            border-radius: 8px;
+            color: var(--text-dark);
+            font-family: 'Jost', sans-serif;
+            font-size: 1rem;
+            margin-top: 7px;
+            outline: none;
+            padding: 12px 14px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .order-field input:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(184, 167, 255, 0.22);
+        }
+
+        .order-error {
+            color: #b84a4a;
+            display: block;
+            font-size: 0.82rem;
+            min-height: 18px;
+            margin-top: 5px;
+        }
+
+        .order-summary {
+            background: #fbfaf7;
+            border: 1px solid rgba(93, 74, 135, 0.12);
+            border-radius: 10px;
+            margin: 18px 0 22px;
+            padding: 16px;
+        }
+
+        .order-items {
+            display: grid;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .order-item-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .order-item-row strong {
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        .order-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .order-submit,
+        .order-secondary {
+            border: 0;
+            cursor: pointer;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.86rem;
+            letter-spacing: 1.6px;
+            padding: 14px 18px;
+            text-transform: uppercase;
+        }
+
+        .order-submit {
+            flex: 1;
+            background: var(--secondary);
+            color: var(--white);
+        }
+
+        .order-submit:hover {
+            background: #6f5a9e;
+        }
+
+        .order-submit:disabled {
+            cursor: wait;
+            opacity: 0.65;
+        }
+
+        .order-secondary {
+            background: var(--bg-color);
+            color: var(--secondary);
+        }
+
+        .order-status {
+            color: var(--secondary);
+            font-size: 0.86rem;
+            min-height: 20px;
+            margin-top: 12px;
+            text-align: center;
+        }
+
+        .success-message {
+            color: var(--text-light);
+            line-height: 1.7;
+            padding: 22px 28px 28px;
+        }
+
+        .success-message strong {
+            color: var(--secondary);
+        }
+
+        .success-message p {
+            margin-bottom: 14px;
+        }
+
         /* ----- FOOTER ----- */
         footer {
-            background-color: var(--secondary);
+            background: #5D4A87;
             color: var(--bg-color);
-            padding: 80px 5% 40px;
+            padding: 42px 5% 24px;
             text-align: center;
+        }
+
+        .footer-inner {
+            max-width: 760px;
+            margin: 0 auto;
         }
 
         .footer-logo {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             letter-spacing: 3px;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
             color: var(--accent);
         }
 
         .footer-social {
-            margin-bottom: 40px;
+            margin-bottom: 24px;
         }
 
         .footer-social a {
@@ -736,7 +954,7 @@
 
         .footer-bottom {
             border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 20px;
+            padding-top: 16px;
             font-size: 0.9rem;
             color: rgba(250, 248, 243, 0.6);
         }
@@ -795,47 +1013,66 @@
 
         @media (max-width: 600px) {
             nav {
-                padding: 10px 4%;
+                padding: 12px 4%;
                 gap: 8px;
             }
             .logo-text {
                 display: none;
             }
             .logo-img {
-                width: 52px;
+                width: 58px;
+                height: 58px;
             }
             .nav-actions {
                 gap: 8px;
             }
             .search-container {
                 padding: 7px 10px;
+                border-radius: 22px;
             }
             .search-input {
-                width: min(34vw, 130px);
+                width: min(42vw, 160px);
             }
             .hero {
-                min-height: 560px;
-                height: calc(100svh - 72px);
+                min-height: 520px;
+                height: calc(100svh - 82px);
+                padding: 36px 5%;
+            }
+            .hero h1 {
+                font-size: clamp(2.45rem, 14vw, 3.9rem);
             }
             .about, .collection {
-                padding-left: 5%;
-                padding-right: 5%;
+                padding: 62px 5%;
             }
             .about-image img {
-                height: 300px;
+                height: auto;
+                aspect-ratio: 1 / 1;
+                border-radius: 8px 58px 8px 8px;
+                box-shadow: 12px 12px 0 var(--primary);
+            }
+            .about h2,
+            .collection-header h2 {
+                font-size: clamp(2.5rem, 13vw, 3.25rem);
+                line-height: 1.08;
             }
             .product-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
                 gap: 12px;
             }
             .product-img-wrapper {
-                height: 220px;
+                height: auto;
+                aspect-ratio: 0.78;
             }
             .product-info {
-                padding: 14px 8px;
+                min-height: 135px;
+                padding: 14px 8px 16px;
             }
             .product-title {
-                font-size: 1.15rem;
+                font-size: clamp(1.2rem, 6vw, 1.55rem);
+                line-height: 1.35;
+            }
+            .product-price {
+                font-size: 1.05rem;
             }
             .modal-content {
                 width: 100%;
@@ -845,12 +1082,28 @@
                 overflow-y: auto;
             }
             .modal-left {
-                min-height: 48svh;
+                min-height: auto;
+                height: auto;
+            }
+            .main-modal-img-container {
+                height: auto;
+                aspect-ratio: 1.1;
+            }
+            .thumbnail-container {
+                height: 104px;
             }
             .modal-right {
                 height: auto;
                 min-height: 52svh;
                 overflow: visible;
+                padding: 28px 20px 24px;
+            }
+            .modal-title {
+                font-size: clamp(2.25rem, 13vw, 3.8rem);
+                line-height: 1.2;
+            }
+            .modal-price {
+                font-size: 1.45rem;
             }
             .cart-sidebar {
                 width: 100%;
@@ -860,7 +1113,30 @@
                 padding-right: 18px;
             }
             footer {
-                padding-top: 55px;
+                padding: 34px 6% 22px;
+            }
+            .footer-logo {
+                font-size: 1.95rem;
+            }
+            .order-modal {
+                padding: 12px;
+                align-items: end;
+            }
+            .order-dialog {
+                max-height: calc(100svh - 24px);
+                border-radius: 14px 14px 0 0;
+            }
+            .order-dialog-header,
+            .order-form,
+            .success-message {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+            .order-meta {
+                grid-template-columns: 1fr;
+            }
+            .order-actions {
+                flex-direction: column-reverse;
             }
         }
     </style>
@@ -896,7 +1172,7 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <span class="section-subtitle">Artisan Crochet Collection</span>
-            <h1>Handcrafted with love, woven with intention, and designed to make your heart smile..</h1>
+            <h1>Handmade with love , designed to make your heart smile..</h1>
             <p>Elevate your aesthetic with premium, handmade crochet accessories designed.</p>
             <a href="#collection" class="cta-btn">Explore Collection</a>
         </div>
@@ -905,14 +1181,13 @@
     <!-- ABOUT -->
     <section id="about" class="about">
         <div class="about-image">
-            <img src="./02.png" alt="Crochet Craftsmanship">
+            <img src="./02.jpg" alt="Crochet Craftsmanship">
         </div>
         <div class="about-content">
             <span class="section-subtitle">Our Heritage</span>
             <h2>The Art of Slow Fashion</h2>
-            <p>Every thread, every loop is more than just a product — it’s a story. </p>
-            <p>At Moonwoven Loops, magic is woven with needle and thread. We believe in the beauty of 'less is more' and the unique warmth that only handmade items can provide. I weave vintage charm into modern essentials, one piece at a time. Each creation is handcrafted with patience, care, and love, designed to celebrate simple, intentional living. From the first knot to the final stitch, nothing is rushed. </p>
-            <p>These are pieces meant to bring a touch of nostalgia, comfort, and quiet joy into your everyday life. Thoughtfully made by hand, for you.</p>
+            <p>In a world that moves fast, we choose to create slowly. Every Moonwoven Loops piece is handcrafted with care, celebrating the beauty of thoughtful design and timeless craftsmanship. </p>
+            <p>Woven with patience and purpose, our creations are made to add warmth, elegance, and quiet joy to your everyday life.</p>
         </div>
     </section>
 
@@ -920,7 +1195,7 @@
     <section id="collection" class="collection">
         <div class="collection-header">
             <span class="section-subtitle">Shop The Look</span>
-            <h2>Our Signature Pieces</h2>
+            <h2>Our Featured Pieces</h2>
         </div>
         
         <div class="product-grid" id="product-container">
@@ -930,15 +1205,18 @@
 
     <!-- FOOTER -->
     <footer>
-        <div class="footer-logo">Moonwoven Loops</div>
-        <p style="margin-bottom: 30px; font-style: italic;">Custom orders and wholesale collaborations welcome.</p>
-        <div class="footer-social">
-            <!-- Removed FB and Whatsapp, kept IG and Pinterest -->
-            <a href="https://www.instagram.com/_thecrochetdiary_?igsh=MThtMnJxNXNicTRqZw=="><i class="fab fa-instagram" title="Instagram"></i></a>
-            <a href="https://in.pinterest.com/handmadebybhanu07/?invite_code=43c6314412394cf1abe29c3c13f1575f&sender=971581457019740429"><i class="fab fa-pinterest" title="Pinterest"></i></a>
-        </div>
-        <div class="footer-bottom">
-            &copy; 2026 Moonwoven Loops. All rights reserved.
+        <div class="footer-inner">
+            <div class="footer-logo">Moonwoven Loops</div>
+            <p style="margin-bottom: 30px; font-style: italic;">Custom orders and wholesale collaborations welcome.</p>
+            <div class="footer-social">
+                <!-- Removed FB and Whatsapp, kept IG and Pinterest -->
+                <a href="https://www.instagram.com/_thecrochetdiary_?igsh=MThtMnJxNXNicTRqZw==" aria-label="Instagram"><i class="fab fa-instagram" title="Instagram"></i></a>
+                <a href="https://in.pinterest.com/handmadebybhanu07/?invite_code=43c6314412394cf1abe29c3c13f1575f&sender=971581457019740429" aria-label="Pinterest"><i class="fab fa-pinterest" title="Pinterest"></i></a>
+               <a href="mailto:bhawnas0720@gmail.com"> <i class="fas fa-envelope"></i></a>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Moonwoven Loops. All rights reserved.
+            </div>
         </div>
     </footer>
 
@@ -960,8 +1238,6 @@
                 <p class="modal-desc" id="modalDesc">Description goes here.</p>
                 
                 <ul class="details-list">
-                    <li><strong>Material</strong> <span id="modalMat"></span></li>
-                    <li><strong>Available Colors</strong> <span id="modalColor"></span></li>
                     <li><strong>Customization</strong> <span id="modalCustom"></span></li>
                     <li><strong>Ideal For</strong> <span id="modalIdeal"></span></li>
                 </ul>
@@ -988,13 +1264,78 @@
                 <span>Estimated total:</span>
                 <span id="cartTotalValue">₹0</span>
             </div>
-            <p class="selection-note">This is a catalogue estimate only. No order or payment is placed.</p>
-            <button class="checkout-btn" id="copySelectionBtn" type="button">Copy Selection Summary</button>
-            <div class="copy-feedback" id="copyFeedback" aria-live="polite"></div>
+            <p class="selection-note">Submit an order request and the admin will contact you to confirm pricing, customization, and delivery.</p>
+            <button class="checkout-btn" id="placeOrderBtn" type="button">Place Order</button>
+            <div class="copy-feedback" id="orderFeedback" aria-live="polite"></div>
+        </div>
+    </div>
+
+    <!-- ORDER MODAL -->
+    <div class="order-modal" id="orderModal" aria-hidden="true">
+        <div class="order-dialog" role="dialog" aria-modal="true" aria-labelledby="orderModalTitle">
+            <div class="order-dialog-header">
+                <div>
+                    <span class="order-kicker">Moonwoven Loops</span>
+                    <h2 id="orderModalTitle">Place Order Request</h2>
+                </div>
+                <button class="order-close" id="closeOrderModal" type="button" aria-label="Close order form">&times;</button>
+            </div>
+            <form class="order-form" id="orderForm" novalidate>
+                <div class="order-meta">
+                    <div class="order-meta-card">
+                        <span>Order Number</span>
+                        <strong id="orderNumberDisplay">MWL-00000000-0000</strong>
+                    </div>
+                    <div class="order-meta-card">
+                        <span>Date & Time</span>
+                        <strong id="orderDateDisplay">--</strong>
+                    </div>
+                </div>
+                <div class="order-field">
+                    <label for="customerName">Full Name *</label>
+                    <input id="customerName" name="customerName" type="text" autocomplete="name" required>
+                    <small class="order-error" id="nameError"></small>
+                </div>
+                <div class="order-field">
+                    <label for="customerPhone">Phone Number *</label>
+                    <input id="customerPhone" name="customerPhone" type="tel" autocomplete="tel" inputmode="tel" required>
+                    <small class="order-error" id="phoneError"></small>
+                </div>
+                <div class="order-summary">
+                    <span class="order-summary-title">Products in Cart</span>
+                    <div class="order-items" id="orderItemsList"></div>
+                </div>
+                <div class="order-actions">
+                    <button class="order-secondary" id="cancelOrderBtn" type="button">Cancel</button>
+                    <button class="order-submit" id="submitOrderBtn" type="submit">Submit Order Request</button>
+                </div>
+                <div class="order-status" id="orderStatus" aria-live="polite"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- SUCCESS MODAL -->
+    <div class="order-modal" id="successModal" aria-hidden="true">
+        <div class="order-dialog" role="dialog" aria-modal="true" aria-labelledby="successModalTitle">
+            <div class="order-dialog-header">
+                <div>
+                    <span class="order-kicker">Request Sent</span>
+                    <h2 id="successModalTitle">Order Request Submitted Successfully!</h2>
+                </div>
+                <button class="order-close" id="closeSuccessModal" type="button" aria-label="Close success message">&times;</button>
+            </div>
+            <div class="success-message">
+                <p><strong>Order Number: <span id="successOrderNumber"></span></strong></p>
+                <p>Thank you for your interest in Moonwoven Loops.</p>
+                <p>Your order request has been sent to the admin. The admin has been notified and will contact you shortly to confirm availability, customization options, pricing, and delivery details.</p>
+                <p>To prevent spam and duplicate requests, every order is recorded with a unique order number.</p>
+                <button class="order-submit" id="successDoneBtn" type="button">Done</button>
+            </div>
         </div>
     </div>
 
     <!-- JAVASCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
         // Total 13 Products Data
         const products = [
@@ -1008,7 +1349,6 @@
                     "./03,3.jpg"
                 ],
                 desc: "Handcrafted floral crochet bangles designed to bring a unique handmade charm to your outfit. Lightweight, comfortable, and perfect for everyday styling.",
-                mat: "Premium Soft Yarn",
                 color: "Customisable",
                 custom: "Yes – Color combination customizable",
                 ideal: "Festivals, Casual Wear, Gifts, Traditional Outfits"
@@ -1019,7 +1359,6 @@
                 img: "./04.jpg",
                 images: ["./04.jpg"],
                 desc: "A sweet and elegant crochet bow keychain that adds a soft aesthetic touch to your daily accessories. Handmade with attention to every detail.",
-                mat: "Premium Soft Yarn",
                 color: "Customisable",
                 custom: "Yes – Bow color customizable",
                 ideal: "Bags, Keychains, Gifts, Aesthetic Accessories"
@@ -1030,8 +1369,6 @@
                 img: "./05.jpg",
                 images: ["./05.jpg"],
                 desc: "A beautiful crochet tulip keychain inspired by fresh spring blooms. Compact, elegant, and perfect for carrying a little flower wherever you go.",
-                mat: "Premium Soft Yarn",
-                color: "Pink, Red, White",
                 custom: "Available for selected colors",
                 ideal: "Gifts, Keychains, Floral Accessories, Bag Charms"
             },
@@ -1129,7 +1466,7 @@
                 price: "₹350",
                 img: "./14.jpg",
                 images: ["./14.jpg"],
-                desc: "Transform your living space with this heavA charming handmade crochet dinosaur designed with a playful long neck and adorable details. Soft, lightweight, and perfect for adding a touch of cuteness to your desk, shelf, or room décor.y, premium throw blanket. Featuring classic, timeless cable stitches, it provides a beautiful textural focal point to your home decor.",
+                desc: "A handmade crochet companion with a playful long neck and charming personality. Perfect for adding a touch of whimsy to your desk, shelf, or cozy corner.",
                 mat: "Premium Soft Yarn",
                 color: "Beige, Light Brown",
                 custom: "Limited color customization available",
@@ -1143,7 +1480,7 @@
                 desc: "Handcrafted crochet alphabet keychain made with soft premium yarn. A cute and personalized accessory, perfect for gifting or adding a unique touch to your keys, bags, or bookmarks.",
                 mat: "Premium Soft Yarn",
                 color: "Customisable",
-                custom: "Yes - Ribbon color customizable",
+                custom: "Yes - Yarn color customizable",
                 ideal: "Gifts, Bag Charms, Keychains, Book Lovers"
             }
         ];
@@ -1164,8 +1501,22 @@
         const closeCart = document.getElementById('closeCart');
         const cartItemsContainer = document.getElementById('cartItemsContainer');
         const cartTotalValue = document.getElementById('cartTotalValue');
-        const copySelectionBtn = document.getElementById('copySelectionBtn');
-        const copyFeedback = document.getElementById('copyFeedback');
+        const placeOrderBtn = document.getElementById('placeOrderBtn');
+        const orderFeedback = document.getElementById('orderFeedback');
+
+        // EmailJS setup:
+        // 1. Replace YOUR_EMAILJS_PUBLIC_KEY with your EmailJS Public Key.
+        // 2. Replace YOUR_EMAILJS_SERVICE_ID with your EmailJS Service ID.
+        // 3. Replace YOUR_EMAILJS_TEMPLATE_ID with your EmailJS Template ID.
+        // Template variables used below: order_no, customer_name, customer_phone,
+        // order_date, products.
+        const EMAILJS_PUBLIC_KEY = 'mL778sVq-ehYJKVf4';
+        const EMAILJS_SERVICE_ID = 'service_o2jba7q';
+        const EMAILJS_TEMPLATE_ID = 'template_1xpncm8';
+
+        if (window.emailjs && EMAILJS_PUBLIC_KEY !== 'YOUR_EMAILJS_PUBLIC_KEY') {
+            emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+        }
 
         // Modal Elements
         const modal = document.getElementById("productModal");
@@ -1173,6 +1524,26 @@
         const mainModalImg = document.getElementById('modalImg');
         const thumbnailContainer = document.getElementById('thumbnailContainer');
         const addToCartBtn = document.getElementById('addToCartBtn');
+
+        // Order Elements
+        const orderModal = document.getElementById('orderModal');
+        const successModal = document.getElementById('successModal');
+        const closeOrderModal = document.getElementById('closeOrderModal');
+        const closeSuccessModal = document.getElementById('closeSuccessModal');
+        const cancelOrderBtn = document.getElementById('cancelOrderBtn');
+        const successDoneBtn = document.getElementById('successDoneBtn');
+        const orderForm = document.getElementById('orderForm');
+        const orderNumberDisplay = document.getElementById('orderNumberDisplay');
+        const orderDateDisplay = document.getElementById('orderDateDisplay');
+        const orderItemsList = document.getElementById('orderItemsList');
+        const customerNameInput = document.getElementById('customerName');
+        const customerPhoneInput = document.getElementById('customerPhone');
+        const nameError = document.getElementById('nameError');
+        const phoneError = document.getElementById('phoneError');
+        const orderStatus = document.getElementById('orderStatus');
+        const submitOrderBtn = document.getElementById('submitOrderBtn');
+        const successOrderNumber = document.getElementById('successOrderNumber');
+        let activeOrder = null;
 
         // --- Render Products to Grid ---
         function renderProducts(productArray) {
@@ -1223,8 +1594,6 @@
             document.getElementById('modalTitle').textContent = p.name;
             document.getElementById('modalPrice').textContent = p.price;
             document.getElementById('modalDesc').textContent = p.desc;
-            document.getElementById('modalMat').textContent = p.mat;
-            document.getElementById('modalColor').textContent = p.color;
             document.getElementById('modalCustom').textContent = p.custom;
             document.getElementById('modalIdeal').textContent = p.ideal;
             
@@ -1314,8 +1683,8 @@
             cartCount.textContent = totalQty;
             cartItemsContainer.innerHTML = '';
             cartTotalValue.textContent = formatCurrency(totalValue);
-            copySelectionBtn.disabled = cart.length === 0;
-            copyFeedback.textContent = '';
+            placeOrderBtn.disabled = cart.length === 0;
+            orderFeedback.textContent = '';
 
             if (cart.length === 0) {
                 cartItemsContainer.innerHTML = '<div class="cart-empty-msg">Your saved selection is empty.<br>Open a product and tap “Add to Selection”.</div>';
@@ -1392,30 +1761,194 @@
             updateCartUI();
         };
 
-        copySelectionBtn.onclick = async function() {
-            const totalValue = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-            const summary = [
-                'Moonwoven Loops — Saved Selection',
-                '',
-                ...cart.map(item => `${item.name} × ${item.qty} — ${formatCurrency(item.price * item.qty)}`),
-                '',
-                `Estimated total: ${formatCurrency(totalValue)}`,
-                'Catalogue estimate only; no order has been placed.'
-            ].join('\n');
+        function generateOrderNumber() {
+            const now = new Date();
+            const datePart = [
+                now.getFullYear(),
+                String(now.getMonth() + 1).padStart(2, '0'),
+                String(now.getDate()).padStart(2, '0')
+            ].join('');
+            const randomPart = Math.floor(1000 + Math.random() * 9000);
+            return `MWL-${datePart}-${randomPart}`;
+        }
+
+        function formatOrderDate(date) {
+            return new Intl.DateTimeFormat('en-IN', {
+                dateStyle: 'medium',
+                timeStyle: 'short'
+            }).format(date);
+        }
+
+        function getOrderProductsText() {
+            return cart.map(item => `${item.name} x${item.qty}`).join('\n');
+        }
+
+        function renderOrderItems() {
+            orderItemsList.innerHTML = '';
+            cart.forEach(item => {
+                const row = document.createElement('div');
+                row.className = 'order-item-row';
+                row.innerHTML = `
+                    <span>${item.name}</span>
+                    <strong>Qty: ${item.qty}</strong>
+                `;
+                orderItemsList.appendChild(row);
+            });
+        }
+
+        function openOrderModal() {
+            if (cart.length === 0) {
+                orderFeedback.textContent = 'Please add at least one product before placing an order.';
+                return;
+            }
+
+            const now = new Date();
+            activeOrder = {
+                number: generateOrderNumber(),
+                dateTime: formatOrderDate(now),
+                isoDateTime: now.toISOString()
+            };
+
+            orderNumberDisplay.textContent = activeOrder.number;
+            orderDateDisplay.textContent = activeOrder.dateTime;
+            customerNameInput.value = '';
+            customerPhoneInput.value = '';
+            nameError.textContent = '';
+            phoneError.textContent = '';
+            orderStatus.textContent = '';
+            submitOrderBtn.disabled = false;
+            renderOrderItems();
+
+            orderModal.classList.add('active');
+            orderModal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => customerNameInput.focus(), 80);
+        }
+
+        function closeOrderModalFunc() {
+            orderModal.classList.remove('active');
+            orderModal.setAttribute('aria-hidden', 'true');
+            if (!cartSidebar.classList.contains('open') && modal.style.display !== 'block') {
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function openSuccessModal(orderNumber) {
+            successOrderNumber.textContent = orderNumber;
+            successModal.classList.add('active');
+            successModal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSuccessModalFunc() {
+            successModal.classList.remove('active');
+            successModal.setAttribute('aria-hidden', 'true');
+            if (!cartSidebar.classList.contains('open') && modal.style.display !== 'block') {
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function validateOrderForm() {
+            let valid = true;
+            const name = customerNameInput.value.trim();
+            const phone = customerPhoneInput.value.trim();
+            const digitCount = phone.replace(/\D/g, '').length;
+
+            nameError.textContent = '';
+            phoneError.textContent = '';
+            orderStatus.textContent = '';
+
+            if (!name) {
+                nameError.textContent = 'Please enter your full name.';
+                valid = false;
+            }
+
+            if (digitCount < 7 || digitCount > 15) {
+                phoneError.textContent = 'Please enter a valid phone number.';
+                valid = false;
+            }
+
+            if (cart.length === 0) {
+                orderStatus.textContent = 'Your cart is empty. Please add a product first.';
+                valid = false;
+            }
+
+            return valid;
+        }
+
+        async function sendOrderEmail(orderData) {
+            if (!window.emailjs) {
+                throw new Error('EmailJS script did not load. Please check your internet connection.');
+            }
+
+            if (
+                EMAILJS_PUBLIC_KEY === 'YOUR_EMAILJS_PUBLIC_KEY' ||
+                EMAILJS_SERVICE_ID === 'YOUR_EMAILJS_SERVICE_ID' ||
+                EMAILJS_TEMPLATE_ID === 'YOUR_EMAILJS_TEMPLATE_ID'
+            ) {
+                throw new Error('Please add your EmailJS Public Key, Service ID, and Template ID in index.html.');
+            }
+
+            return emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, orderData);
+        }
+
+        function getEmailJSErrorMessage(error) {
+            console.error('EmailJS order submission failed:', error);
+
+            if (error?.text) {
+                return `EmailJS error: ${error.text}`;
+            }
+
+            if (error?.status) {
+                return `EmailJS error status ${error.status}. Please check your EmailJS service, template, and public key.`;
+            }
+
+            if (error?.message) {
+                return error.message;
+            }
+
+            return 'EmailJS could not send this order. Please check your EmailJS template and admin recipient settings.';
+        }
+
+        placeOrderBtn.onclick = openOrderModal;
+        closeOrderModal.onclick = closeOrderModalFunc;
+        cancelOrderBtn.onclick = closeOrderModalFunc;
+        closeSuccessModal.onclick = closeSuccessModalFunc;
+        successDoneBtn.onclick = closeSuccessModalFunc;
+
+        orderForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            if (!validateOrderForm()) return;
+
+            const orderNumber = activeOrder?.number || generateOrderNumber();
+            const orderDateTime = activeOrder?.dateTime || formatOrderDate(new Date());
+            const formattedProducts = getOrderProductsText();
+
+            const orderData = {
+                order_no: orderNumber,
+                customer_name: customerNameInput.value.trim(),
+                customer_phone: customerPhoneInput.value.trim(),
+                order_date: orderDateTime,
+                products: formattedProducts
+            };
+
+            submitOrderBtn.disabled = true;
+            orderStatus.textContent = 'Sending your order request...';
 
             try {
-                await navigator.clipboard.writeText(summary);
-                copyFeedback.textContent = 'Selection summary copied!';
+                await sendOrderEmail(orderData);
+                cart = [];
+                saveCart();
+                updateCartUI();
+                closeOrderModalFunc();
+                closeCartFunc();
+                openSuccessModal(orderNumber);
             } catch (error) {
-                const textArea = document.createElement('textarea');
-                textArea.value = summary;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                textArea.remove();
-                copyFeedback.textContent = 'Selection summary copied!';
+                orderStatus.textContent = getEmailJSErrorMessage(error);
+                submitOrderBtn.disabled = false;
             }
-        };
+        });
 
         // Cart UI Open/Close Toggle
         cartOpenBtn.onclick = () => {
@@ -1428,7 +1961,7 @@
             cartSidebar.classList.remove('open');
             cartOverlay.classList.remove('active');
             // Only restore scroll if main modal is also closed
-            if (modal.style.display !== "block") {
+            if (modal.style.display !== "block" && !orderModal.classList.contains('active') && !successModal.classList.contains('active')) {
                 document.body.style.overflow = "auto";
             }
         }
@@ -1442,7 +1975,19 @@
                 modal.style.display = "none";
                 document.body.style.overflow = "auto";
             }
+            if (event.target == orderModal) {
+                closeOrderModalFunc();
+            }
+            if (event.target == successModal) {
+                closeSuccessModalFunc();
+            }
         }
+
+        window.addEventListener('keydown', (event) => {
+            if (event.key !== 'Escape') return;
+            if (orderModal.classList.contains('active')) closeOrderModalFunc();
+            if (successModal.classList.contains('active')) closeSuccessModalFunc();
+        });
 
         // Initialize Cart UI on page load
         updateCartUI();

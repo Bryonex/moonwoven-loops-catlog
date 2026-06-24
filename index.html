@@ -1057,53 +1057,157 @@
             }
             .product-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 12px;
+                gap: 34px 18px;
+            }
+            .product-card {
+                background: transparent;
+                border-radius: 0;
+                box-shadow: none;
+            }
+            .product-card:hover {
+                box-shadow: none;
+                transform: none;
             }
             .product-img-wrapper {
                 height: auto;
-                aspect-ratio: 0.78;
+                aspect-ratio: 1 / 1;
+                border-radius: 8px;
+            }
+            .product-card:hover .product-img {
+                transform: none;
             }
             .product-info {
-                min-height: 135px;
-                padding: 14px 8px 16px;
+                min-height: 0;
+                border-top: 0;
+                padding: 10px 0 0;
+                text-align: left;
             }
             .product-title {
-                font-size: clamp(1.2rem, 6vw, 1.55rem);
-                line-height: 1.35;
+                color: #4d4d4d;
+                font-family: 'Jost', sans-serif;
+                font-size: clamp(1rem, 4.8vw, 1.22rem);
+                line-height: 1.25;
+                margin-bottom: 6px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
             }
             .product-price {
-                font-size: 1.05rem;
+                color: #111111;
+                font-size: 1.24rem;
+                font-weight: 600;
+            }
+            .modal {
+                background: var(--white);
+                backdrop-filter: none;
             }
             .modal-content {
                 width: 100%;
                 height: 100svh;
                 margin: 0;
                 border-radius: 0;
+                box-shadow: none;
+                display: block;
                 overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+                background: var(--white);
+                animation: none;
+            }
+            .close-btn {
+                align-items: center;
+                background: rgba(43, 43, 43, 0.45);
+                border-radius: 50%;
+                color: var(--white);
+                display: flex;
+                font-size: 26px;
+                height: 42px;
+                justify-content: center;
+                line-height: 1;
+                position: fixed;
+                right: 14px;
+                top: 14px;
+                width: 42px;
             }
             .modal-left {
                 min-height: auto;
                 height: auto;
+                width: 100%;
             }
             .main-modal-img-container {
                 height: auto;
-                aspect-ratio: 1.1;
+                aspect-ratio: 1 / 1.12;
+                max-height: 58svh;
+                overflow: hidden;
+                background: #f6f4ef;
+            }
+            .modal-img {
+                border-radius: 0;
+                object-position: center;
             }
             .thumbnail-container {
-                height: 104px;
+                align-items: center;
+                background: var(--white);
+                border-radius: 0;
+                gap: 14px;
+                height: auto;
+                padding: 16px 5% 18px;
+            }
+            .thumbnail {
+                aspect-ratio: 1 / 1;
+                border-radius: 7px;
+                height: auto;
+                width: 84px;
             }
             .modal-right {
+                background: var(--white);
                 height: auto;
-                min-height: 52svh;
+                min-height: auto;
                 overflow: visible;
-                padding: 28px 20px 24px;
+                padding: 34px 6% 28px;
+                width: 100%;
             }
             .modal-title {
-                font-size: clamp(2.25rem, 13vw, 3.8rem);
-                line-height: 1.2;
+                font-size: clamp(2.2rem, 11vw, 3rem);
+                line-height: 1.06;
+                margin-bottom: 14px;
             }
             .modal-price {
-                font-size: 1.45rem;
+                color: var(--accent);
+                font-size: 1.55rem;
+                margin-bottom: 22px;
+            }
+            .modal-desc {
+                font-size: 1rem;
+                line-height: 1.75;
+                margin-bottom: 22px;
+            }
+            .details-list {
+                background: #fbfaf7;
+                border: 1px solid rgba(93, 74, 135, 0.11);
+                border-radius: 8px;
+                margin-bottom: 22px;
+                padding: 14px 16px;
+            }
+            .details-list li {
+                gap: 8px;
+                margin-bottom: 12px;
+            }
+            .details-list li:last-child {
+                margin-bottom: 0;
+            }
+            .details-list strong {
+                font-size: 0.74rem;
+            }
+            .cart-btn {
+                border-radius: 999px;
+                font-size: 0.9rem;
+                justify-content: space-between;
+                letter-spacing: 1px;
+                margin-top: 14px;
+                padding: 16px 20px;
+                position: sticky;
+                bottom: 14px;
+                box-shadow: 0 12px 28px rgba(93, 74, 135, 0.24);
             }
             .cart-sidebar {
                 width: 100%;
@@ -1341,7 +1445,7 @@
         const products = [
             {
                 name: "Crochet Floral Bangles 🌸",
-                price: "₹200 (Set of 6)",
+                price: "₹250 6 bangles (designed for a complete one-hand stack)",
                 img: "./03,1.jpg",
                 images: [
                     "./03,1.jpg",
@@ -1396,7 +1500,7 @@
             },
             {
                 name: "Crochet Sunflower Pot 🌻",
-                price: "₹350",
+                price: "₹320",
                 img: "./08.jpg",
                 images: ["./08.jpg"],
                 desc: "A forever-blooming sunflower in a crochet pot. Handcrafted with care and designed to brighten desks, study tables, and shelves without ever needing water.",

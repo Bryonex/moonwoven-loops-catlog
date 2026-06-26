@@ -1422,7 +1422,7 @@
                 <span>Estimated total:</span>
                 <span id="cartTotalValue">₹0</span>
             </div>
-            <p class="selection-note">Submit an order request and the admin will contact you to confirm pricing, customization, and delivery.</p>
+            <p class="selection-note" style="color: #5D4A87; font-weight: 500;">Note: This is an order request, no payment is required now. Our team will call you within 1 to 24 hours to confirm your items and arrange payment. Please do not submit duplicate orders.</p>
             <button class="checkout-btn" id="placeOrderBtn" type="button">Place Order</button>
             <div class="copy-feedback" id="orderFeedback" aria-live="polite"></div>
         </div>
@@ -1483,11 +1483,12 @@
                 <button class="order-close" id="closeSuccessModal" type="button" aria-label="Close success message">&times;</button>
             </div>
             <div class="success-message">
+                <p class="selection-note" style="color: #5D4A87; font-weight: 500;">Note: This is an order request, no payment is required now. Our team will call you within 1 to 24 hours to confirm your items and arrange payment. Please do not submit duplicate orders.</p>
                 <p><strong>Order Number: <span id="successOrderNumber"></span></strong></p>
-                <p>Thank you for your interest in Moonwoven Loops.</p>
-                <p>Your order request has been sent to the admin. The admin has been notified and will contact you shortly to confirm availability, customization options, pricing, and delivery details.</p>
-                <p>To prevent spam and duplicate requests, every order is recorded with a unique order number.</p>
-                <button class="order-submit" id="successDoneBtn" type="button">Done</button>
+                <p>Thank you for choosing Moonwoven Loops!</p>
+                <p>We have successfully received your request. <strong>Expect a confirmation call within 1 to 24 hours</strong> to finalize your items and arrange payment.</p>
+                <p style="color: #b84a4a; font-weight: 500; margin-top: 15px;">To avoid spam, please do not submit this order again.</p>
+                <button class="order-submit" id="successDoneBtn" type="button" style="margin-top: 20px;">Done</button>
             </div>
         </div>
     </div>
@@ -1926,8 +1927,25 @@
                 String(now.getMonth() + 1).padStart(2, '0'),
                 String(now.getDate()).padStart(2, '0')
             ].join('');
-            const randomPart = Math.floor(1000 + Math.random() * 9000);
-            return `MWL-${datePart}-${randomPart}`;
+            
+            // 1. Fetch tracking data from local storage (or create it if it doesn't exist)
+            let orderTracker = JSON.parse(localStorage.getItem('mwl_order_tracker')) || { date: '', count: 0 };
+            
+            // 2. If it's a new day, reset the count to 1. Otherwise, just add 1.
+            if (orderTracker.date !== datePart) {
+                orderTracker.date = datePart;
+                orderTracker.count = 1;
+            } else {
+                orderTracker.count += 1;
+            }
+            
+            // 3. Save the updated tracker back to local storage
+            localStorage.setItem('mwl_order_tracker', JSON.stringify(orderTracker));
+            
+            // 4. Format the count to always be 3 digits (e.g., 001, 002, 015)
+            const sequencePart = String(orderTracker.count).padStart(3, '0');
+            
+            return `MWL-${datePart}-${sequencePart}`;
         }
 
         function formatOrderDate(date) {
